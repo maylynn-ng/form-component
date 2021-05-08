@@ -16,13 +16,13 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
     <div className="privacyform-container">
       <form onSubmit={handleSubmit}>
         <div className="checkbox">
-          <input type="checkbox" name="updates" id="updates" />
+          <input type="checkbox" name="updates" />
           <div className="checkbox-text">
             Receive updates about Tray.io product by email
           </div>
         </div>
         <div className="checkbox">
-          <input type="checkbox" name="communication" id="communication" />
+          <input type="checkbox" name="communication" />
           <div className="checkbox-text">
             Receive communication by email for other products created by the
             Tray.io team

@@ -1,3 +1,9 @@
+html {
+  --tray-blue: #0d66e5;
+  --tray-font: 'Akkurat', 'Helvetica', sans-serif;
+  --tray-blue-text: #1a1a3b;
+}
+
 .privacyform-container form {
   display: flex;
   flex-direction: column;
@@ -6,4 +12,23 @@
 .privacyform-container .checkbox {
   display: flex;
   flex-direction: row;
+  font-family: var(--tray-font);
+}
+
+.privacyform-container .checkbox-text {
+  color: var(--tray-blue-text);
+  margin-left: 0.7em;
+}
+
+input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  border: 2.5px solid var(--tray-blue);
+  background-color: transparent;
+  appearance: none;
+}
+
+input[type='checkbox']:checked {
+  background-color: var(--tray-blue);
 }

@@ -2,6 +2,7 @@ html {
   --tray-blue: #0d66e5;
   --tray-blue-hover: #143861;
   --tray-white: #fff;
+  --tray-grey-light: #b8b8c7;
   --tray-font: 'Akkurat', 'Helvetica', sans-serif;
   --border-radius: 4px;
 }
@@ -11,8 +12,28 @@ html {
   flex-direction: column;
 }
 
+.userform-container label {
+  font-size: 0.75em;
+  font-weight: 700;
+  margin: 0.625em 0;
+}
+
+.userform-container input {
+  padding: 1em;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--tray-grey-light);
+  font-family: 0.8em;
+}
+
+.userform-container form {
+  display: flex;
+  flex-direction: column;
+}
+
 .userform-container form button {
   background-color: var(--tray-blue);
+  margin-top: 0.8em;
   padding: 0.5em 1em;
   cursor: pointer;
   color: var(--tray-white);
@@ -22,10 +43,17 @@ html {
   border-radius: var(--border-radius);
   border: 2px solid var(--tray-blue);
   transition: all 0.3s ease;
+  align-self: flex-end;
 }
 
-.userform-container form button:hover {
+.userform-container form button .enable:hover {
   background-color: var(--tray-blue-hover);
   border: 2px solid var(--tray-blue-hover);
+  transition: all 0.3s ease;
+}
+
+.disable {
+  cursor: not-allowed;
+  opacity: 0.4;
   transition: all 0.3s ease;
 }

@@ -5,6 +5,7 @@ import { UserForm, PrivacyForm, DoneForm } from '../../Components';
 
 const Dashboard: FC = () => {
   const [isValid, setIsValid] = useState(false);
+  const [formPage, setFormPage] = useState('userForm');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -17,17 +18,23 @@ const Dashboard: FC = () => {
 
   return (
     <div>
-      <UserForm
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        isValid={isValid}
-      />
-      <PrivacyForm
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        isValid={isValid}
-      />
-      <DoneForm isValid={isValid} />
+      <div className="form-container">
+        {formPage === 'userForm' ? (
+          <UserForm
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            isValid={isValid}
+          />
+        ) : null}
+        {formPage === 'privacyForm' ? (
+          <PrivacyForm
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            isValid={isValid}
+          />
+        ) : null}
+        {formPage === 'doneForm' ? <DoneForm isValid={isValid} /> : null}
+      </div>
     </div>
   );
 };
