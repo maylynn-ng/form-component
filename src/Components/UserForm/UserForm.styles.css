@@ -1,4 +1,31 @@
+html {
+  --tray-blue: #0d66e5;
+  --tray-blue-hover: #143861;
+  --tray-white: #fff;
+  --tray-font: 'Akkurat', 'Helvetica', sans-serif;
+  --border-radius: 4px;
+}
+
 .userform-container .inputs-container {
   display: flex;
   flex-direction: column;
+}
+
+.userform-container form button {
+  background-color: var(--tray-blue);
+  padding: 0.5em 1em;
+  cursor: pointer;
+  color: var(--tray-white);
+  font-family: var(--tray-font);
+  font-size: 1em;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--tray-blue);
+  transition: all 0.3s ease;
+}
+
+.userform-container form button:hover {
+  background-color: var(--tray-blue-hover);
+  border: 2px solid var(--tray-blue-hover);
+  transition: all 0.3s ease;
 }
