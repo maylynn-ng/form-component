@@ -1,0 +1,9 @@
+.privacyform-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.privacyform-container .checkbox {
+  display: flex;
+  flex-direction: row;
+}

@@ -3,9 +3,15 @@ import './UserForm.styles.css';
 
 interface IUserFormProps {
   handleSubmit: FormEventHandler<HTMLFormElement>;
+  handleChange: FormEventHandler<HTMLFormElement>;
+  isValid: boolean;
 }
 
-const UserForm: FC<IUserFormProps> = ({ handleSubmit }) => {
+const UserForm: FC<IUserFormProps> = ({
+  handleSubmit,
+  handleChange,
+  isValid,
+}) => {
   return (
     <div className="userform-container">
       <form onSubmit={handleSubmit}>
@@ -22,7 +28,9 @@ const UserForm: FC<IUserFormProps> = ({ handleSubmit }) => {
           <label htmlFor="password">Password</label>
           <input id="password" type="text" placeholder="Password" />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className={`${isValid ? 'enable' : 'disable'}`}>
+          Submit
+        </button>
       </form>
     </div>
   );
