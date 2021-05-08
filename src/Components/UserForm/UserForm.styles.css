@@ -1,0 +1,8 @@
+.userform-container {
+  padding: 3em;
+}
+
+.userform-container .inputs-container {
+  display: flex;
+  flex-direction: column;
+}
