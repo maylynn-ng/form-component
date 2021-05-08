@@ -2,19 +2,13 @@ import { ChangeEventHandler, FC, FormEventHandler } from 'react';
 import './PrivacyForm.styles.css';
 
 import { Button } from '../../Elements';
+import { IFormData } from '../../types';
 
 interface IPrivacyFormProps {
   handleSubmit: FormEventHandler<HTMLFormElement>;
   handleChange: ChangeEventHandler<HTMLInputElement>;
   isValid: boolean;
   formData: IFormData;
-}
-
-interface IFormData {
-  name: string;
-  role: string;
-  email: string;
-  password: string;
 }
 
 const PrivacyForm: FC<IPrivacyFormProps> = ({

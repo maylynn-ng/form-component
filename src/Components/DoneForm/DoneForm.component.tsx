@@ -1,18 +1,22 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import './DoneForm.styles.css';
+
+import { IFormData } from '../../types';
 
 interface IDoneFormProps {
   isValid: boolean;
+  formData: IFormData;
 }
 
-const DoneForm: FC<IDoneFormProps> = ({ isValid }) => {
-  const validTextResponse =
-    'Please verify your email address, you should have received an email from us already!';
-  const invalidTextResponse = `Seems like you're input for ${'invalid input'} is missing or not quite right`;
+const DoneForm: FC<IDoneFormProps> = ({ isValid, formData }) => {
+  useEffect(() => {
+    console.log(JSON.stringify(formData));
+  }, []);
 
   return (
     <div className="doneform-container">
-      {isValid ? validTextResponse : invalidTextResponse}
+      'Please verify your email address, you should have received an email from
+      us already!'
     </div>
   );
 };

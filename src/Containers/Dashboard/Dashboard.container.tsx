@@ -26,8 +26,9 @@ const Dashboard: FC = () => {
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const { id, value } = e.target;
-    setFormData(prevState => ({ ...prevState, [id]: value }));
+    const { name, value } = e.target;
+    setFormData(prevState => ({ ...prevState, [name]: value.trim() }));
+    console.log(validateInput(name, value));
   };
 
   const validateInput = (name: string, input: string): string[] => {
@@ -93,7 +94,9 @@ const Dashboard: FC = () => {
             formData={formData}
           />
         ) : null}
-        {formPage === 'doneForm' ? <DoneForm isValid={isValid} /> : null}
+        {formPage === 'doneForm' ? (
+          <DoneForm isValid={isValid} formData={formData} />
+        ) : null}
       </div>
     </div>
   );

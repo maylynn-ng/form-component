@@ -31,7 +31,7 @@ const UserForm: FC<IUserFormProps> = ({
             Name <span className="required">*</span>
           </label>
           <input
-            id="name"
+            name="name"
             type="text"
             placeholder="Name"
             onChange={handleChange}
@@ -40,7 +40,7 @@ const UserForm: FC<IUserFormProps> = ({
 
           <label htmlFor="role">Role</label>
           <input
-            id="role"
+            name="role"
             type="text"
             placeholder="Role"
             onChange={handleChange}
@@ -51,7 +51,7 @@ const UserForm: FC<IUserFormProps> = ({
             Email <span className="required">*</span>
           </label>
           <input
-            id="email"
+            name="email"
             type="email"
             placeholder="Email"
             onChange={handleChange}
@@ -62,7 +62,7 @@ const UserForm: FC<IUserFormProps> = ({
             Password <span className="required">*</span>
           </label>
           <input
-            id="password"
+            name="password"
             type="password"
             placeholder="Password"
             onChange={handleChange}
