@@ -1,16 +1,27 @@
-import { FC, FormEventHandler } from 'react';
+import { ChangeEventHandler, FC, FormEventHandler } from 'react';
 import './PrivacyForm.styles.css';
+
+import { Button } from '../../Elements';
 
 interface IPrivacyFormProps {
   handleSubmit: FormEventHandler<HTMLFormElement>;
-  handleChange: FormEventHandler<HTMLFormElement>;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
   isValid: boolean;
+  formData: IFormData;
+}
+
+interface IFormData {
+  name: string;
+  role: string;
+  email: string;
+  password: string;
 }
 
 const PrivacyForm: FC<IPrivacyFormProps> = ({
   handleSubmit,
   handleChange,
   isValid,
+  formData,
 }) => {
   return (
     <div className="privacyform-container">
@@ -28,6 +39,7 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
             Tray.io team
           </div>
         </div>
+        <Button isValid={isValid} buttonText="Submit" />
       </form>
     </div>
   );
