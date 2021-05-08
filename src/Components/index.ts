@@ -2,5 +2,6 @@ import NavBar from './NavBar/NavBar.component';
 import UserForm from './UserForm/UserForm.component';
 import PrivacyForm from './PrivacyForm/PrivacyForm.components';
 import DoneForm from './DoneForm/DoneForm.component';
+import FormSelector from './FormSelector/FormSelector.component';
 
-export { NavBar, UserForm, PrivacyForm, DoneForm };
+export { NavBar, UserForm, PrivacyForm, DoneForm, FormSelector };

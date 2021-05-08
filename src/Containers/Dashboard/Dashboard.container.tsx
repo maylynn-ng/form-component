@@ -1,7 +1,12 @@
 import React, { ChangeEvent, FC, FormEvent, useEffect, useState } from 'react';
 import './Dashboard.styles.css';
 
-import { UserForm, PrivacyForm, DoneForm } from '../../Components';
+import {
+  UserForm,
+  PrivacyForm,
+  DoneForm,
+  FormSelector,
+} from '../../Components';
 
 interface IFormData {
   name: string;
@@ -61,23 +66,7 @@ const Dashboard: FC = () => {
   return (
     <div className="dashboard-container">
       <div className="form-container">
-        <div className="formpage-selector">
-          <div
-            onClick={() => setFormPage('userForm')}
-            className={`tab ${formPage === 'userForm' ? 'selected' : ''}`}>
-            User
-          </div>
-          <div
-            onClick={() => setFormPage('privacyForm')}
-            className={`tab ${formPage === 'privacyForm' ? 'selected' : ''}`}>
-            Privacy
-          </div>
-          <div
-            onClick={() => setFormPage('doneForm')}
-            className={`tab ${formPage === 'doneForm' ? 'selected' : ''}`}>
-            Done
-          </div>
-        </div>
+        <FormSelector setFormPage={setFormPage} formPage={formPage} />
         {formPage === 'userForm' ? (
           <UserForm
             handleSubmit={handleSubmit}

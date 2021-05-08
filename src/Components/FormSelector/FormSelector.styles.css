@@ -1,0 +1,27 @@
+.formpage-selector {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-bottom: 1em;
+  border-radius: var(--border-radius);
+}
+
+.formpage-selector .tab {
+  border-bottom: 2px solid var(--tray-grey-light);
+  border-right: 2px solid var(--tray-grey-light);
+  cursor: pointer;
+  width: 100%;
+  padding: 0.3em;
+  text-align: center;
+}
+
+.formpage-selector .tab:last-child {
+  border-right: none;
+}
+
+.selected {
+  background-color: var(--tray-blue);
+  border: 2px solid var(--tray-blue);
+  border-radius: var(--border-radius);
+  color: var(--tray-white);
+}
