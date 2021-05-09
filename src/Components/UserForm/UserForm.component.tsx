@@ -61,7 +61,7 @@ const UserForm: FC<IUserFormProps> = ({
             required={true}
           />
         </div>
-        <Button isValid={isValid} buttonText="Submit" directTo="privacyForm" />
+        <Button isValid={isValid} buttonText="Submit" />
       </form>
     </div>
   );

@@ -31,7 +31,7 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
           Tray.io team
         </div>
       </div>
-      <Button isValid={isValid} buttonText="Submit" directTo="doneForm" />
+      <Button isValid={isValid} buttonText="Submit" />
       {/* </form> */}
     </div>
   );

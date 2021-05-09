@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import './Dashboard.styles.css';
 import { IFormData, initialFormState, Pages } from '../../types';
 
@@ -12,17 +12,21 @@ import {
 const Dashboard: FC = () => {
   const [isValid, setIsValid] = useState<boolean>(false);
   const [formPage, setFormPage] = useState<Pages>('userForm');
+  const [pageIndex, setPageIndex] = useState<number>(0);
   const [allowedPages, setAllowedPages] = useState<Pages[]>(['userForm']);
   const [formData, setFormData] = useState<IFormData>(initialFormState);
 
-  // const pagesArray: Pages[] = ['userForm', 'privacyForm', 'doneForm'];
+  const pagesArray: Pages[] = ['userForm', 'privacyForm', 'doneForm'];
 
   const handleSubmit = (formInput: IFormData): void => {
-    console.log(formInput);
     setFormData(formInput);
-    setFormPage('privacyForm');
-    setAllowedPages(prev => [...prev, 'privacyForm']);
+    setPageIndex(prevIndex => prevIndex + 1);
   };
+
+  useEffect(() => {
+    setAllowedPages(prevPages => [...prevPages, pagesArray[pageIndex]]);
+    setFormPage(pagesArray[pageIndex]);
+  }, [pageIndex]);
 
   return (
     <div className="dashboard-container">
@@ -31,6 +35,7 @@ const Dashboard: FC = () => {
           setFormPage={setFormPage}
           formPage={formPage}
           allowedPages={allowedPages}
+          pagesArray={pagesArray}
         />
         <div className="form">
           {formPage === 'userForm' ? (

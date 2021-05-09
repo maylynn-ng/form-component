@@ -4,10 +4,9 @@ import './Button.styles.css';
 interface IButtonProps {
   isValid: boolean;
   buttonText: string;
-  directTo: string;
 }
 
-const Button: FC<IButtonProps> = ({ isValid, buttonText, directTo }) => {
+const Button: FC<IButtonProps> = ({ isValid, buttonText }) => {
   return (
     <button type="submit" className={`${isValid ? 'enable' : 'disable'}`}>
       {buttonText}

@@ -6,23 +6,33 @@ interface IFormSelectorProps {
   setFormPage: Dispatch<SetStateAction<Pages>>;
   formPage: Pages;
   allowedPages: Pages[];
+  pagesArray: Pages[];
 }
 
 const FormSelector: FC<IFormSelectorProps> = ({
   setFormPage,
   formPage,
   allowedPages,
+  pagesArray,
 }) => {
-  const pagesArray: Pages[] = ['userForm', 'privacyForm', 'doneForm'];
+  const handleClick = (
+    allowedPages: Pages[],
+    page: Pages,
+    setFormPage: Dispatch<SetStateAction<Pages>>
+  ): void => {
+    if (allowedPages.includes(page)) {
+      setFormPage(page);
+    }
+  };
 
   return (
     <div className="formpage-selector">
       {pagesArray.map(page => (
         <div
-          onClick={() => setFormPage(page)}
-          className={`tab ${
-            formPage === page ? 'selected' : ''
-          }`}>{`${page[0].toUpperCase()}${page.slice(1, -4)}`}</div>
+          onClick={() => handleClick(allowedPages, page, setFormPage)}
+          className={`tab ${formPage === page ? 'selected' : ''}
+          ${!allowedPages.includes(page) ? 'disable' : ''}
+          `}>{`${page[0].toUpperCase()}${page.slice(1, -4)}`}</div>
       ))}
     </div>
   );
