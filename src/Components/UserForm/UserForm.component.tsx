@@ -3,7 +3,6 @@ import './UserForm.styles.css';
 import { useFormik } from 'formik';
 
 import { IFormData, initialFormState, formValidationSchema } from '../../types';
-import { Button } from '../../Elements';
 import { FormField } from '../';
 
 interface IUserFormProps {
@@ -29,7 +28,6 @@ const UserForm: FC<IUserFormProps> = ({
   });
 
   const handleClick = (formInput: IFormData): void => {
-    console.log(formInput);
     if (isValid) {
       setFormData(formInput);
       setPageIndex(prevIndex => prevIndex + 1);

@@ -9,15 +9,10 @@
   --tray-grey: #878796;
   --tray-grey-light: #b8b8c7;
   --tray-grey-dark: #5c5c70;
+  --tray-green: #0dbf73;
   --tray-error: red;
-  --tray-box-shadow: 0 3px 6px 0 rbga(16, 16, 16, 0.25);
 
   --tray-font: 'Akkurat', 'Helvetica', sans-serif;
-  --font-size-heading-one: 42px;
-  --font-size-heading-two: 32px;
-  --font-size-heading-three: 22px;
-
+  --tray-box-shadow: 0 3px 6px 0 rbga(16, 16, 16, 0.25);
   --border-radius: 4px;
-  --short-transition-duration: 200ms;
-  --long-transition-duration: 400ms;
 }

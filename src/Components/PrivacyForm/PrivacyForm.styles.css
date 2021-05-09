@@ -13,11 +13,18 @@ html {
   display: flex;
   flex-direction: row;
   font-family: var(--tray-font);
+  /* border: 2px solid black; */
+  align-items: center;
+  margin: 1em 0;
 }
 
 .privacyform-container .checkbox-text {
   color: var(--tray-blue-text);
+  font-weight: 500;
   margin-left: 0.7em;
+  width: 80%;
+  /* border: 2px solid black; */
+  text-align: center;
 }
 
 input[type='checkbox'] {
@@ -27,6 +34,7 @@ input[type='checkbox'] {
   border: 2.5px solid var(--tray-blue);
   background-color: transparent;
   appearance: none;
+  cursor: pointer;
 }
 
 input[type='checkbox']:checked {

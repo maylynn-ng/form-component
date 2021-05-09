@@ -58,6 +58,7 @@ const Dashboard: FC = () => {
               formData={formData}
               setFormData={setFormData}
               setFormPage={setFormPage}
+              setAllowedPages={setAllowedPages}
             />
           </div>
           <div
