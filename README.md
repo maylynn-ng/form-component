@@ -1,6 +1,6 @@
 # React Form Component
 
-![Screenshot 2021-05-09 at 18.30.00](/Users/maylynnng/Desktop/Screenshot 2021-05-09 at 18.30.00.png)
+[Screenshot](./readmeFiles/screenshot.png)
 
 #### Table of Contents
 
