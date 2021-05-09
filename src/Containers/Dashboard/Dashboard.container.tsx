@@ -30,6 +30,7 @@ const Dashboard: FC = () => {
 
   return (
     <div className="dashboard-container">
+      <div className="signup-text">Sign up to stay tuned with us!</div>
       <div className="form-container">
         <FormSelector
           setFormPage={setFormPage}

@@ -5,6 +5,13 @@
   padding: 3em;
 }
 
+.signup-text {
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 1em;
+  color: var(--tray-blue-text);
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
