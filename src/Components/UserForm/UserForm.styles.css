@@ -1,13 +1,3 @@
-html {
-  --tray-blue: #0d66e5;
-  --tray-blue-hover: #143861;
-  --tray-white: #fff;
-  --tray-grey-light: #b8b8c7;
-  --tray-font: 'Akkurat', 'Helvetica', sans-serif;
-  --border-radius: 4px;
-  --tray-error: red;
-}
-
 .userform-container {
   width: 100%;
 }

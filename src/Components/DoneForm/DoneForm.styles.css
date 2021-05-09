@@ -1,6 +1,3 @@
-html {
-  --tray-green: #0dbf73;
-}
 .doneform-container {
   color: var(--tray-green);
   padding: 2em;

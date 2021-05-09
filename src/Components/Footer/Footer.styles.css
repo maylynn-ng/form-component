@@ -1,0 +1,32 @@
+.curve-container {
+  display: flex;
+  height: 3em;
+}
+
+.footer-curve {
+  width: 100vw;
+  height: 100%;
+  background-color: var(--tray-white);
+}
+
+.footer-left-curve {
+  border-bottom-left-radius: 100%;
+  background-color: var(--tray-white);
+  width: 10%;
+  height: 100%;
+  align-self: flex-start;
+}
+
+.footer-container {
+  background-color: var(--tray-blue-dark);
+  height: 500px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-container img {
+  height: 4em;
+  padding: 3em;
+}
