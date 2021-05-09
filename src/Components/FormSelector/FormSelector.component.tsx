@@ -29,6 +29,7 @@ const FormSelector: FC<IFormSelectorProps> = ({
     <div className="formpage-selector">
       {pagesArray.map(page => (
         <div
+          key={page}
           onClick={() => handleClick(allowedPages, page, setFormPage)}
           className={`tab ${formPage === page ? 'selected' : ''}
           ${!allowedPages.includes(page) ? 'disable' : ''}

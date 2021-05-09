@@ -30,7 +30,7 @@ export const formValidationSchema = yup.object().shape({
   password: yup
     .string()
     .required()
-    .matches(/.{9,}/, 'must be at least 10 characters')
+    .matches(/.{9,}/g, 'must be at least 10 characters')
     .matches(/[a-z]/g, 'must include at least one lowercase letter')
     .matches(/[A-Z]/g, 'must include at least one uppercase letter')
     .matches(/\d/g, 'must have at least one number'),

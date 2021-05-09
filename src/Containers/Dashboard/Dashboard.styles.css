@@ -17,7 +17,7 @@
   flex-direction: column;
   width: 80%;
   max-width: 450px;
-  height: 400px;
+  height: 440px;
   padding: 2em;
   border: 2px solid var(--tray-white);
   border-radius: var(--border-radius);

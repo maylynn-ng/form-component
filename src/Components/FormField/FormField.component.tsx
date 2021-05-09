@@ -48,7 +48,7 @@ const FormField: FC<IFormFieldProps> = ({
         }}
         value={formik.values[label]}
       />
-      {required && formik.touched[label] && formik.errors[label] ? (
+      {required && formik.errors[label] ? (
         <div className="validation-error-message">{formik.errors[label]}</div>
       ) : null}
     </div>

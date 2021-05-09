@@ -26,6 +26,7 @@ const Dashboard: FC = () => {
   useEffect(() => {
     setAllowedPages(prevPages => [...prevPages, pagesArray[pageIndex]]);
     setFormPage(pagesArray[pageIndex]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageIndex]);
 
   return (
@@ -66,7 +67,7 @@ const Dashboard: FC = () => {
             style={{
               display: `${formPage === 'doneForm' ? 'flex' : 'none'}`,
             }}>
-            <DoneForm formData={formData} />
+            <DoneForm formData={formData} formPage={formPage} />
           </div>
         </div>
       </div>
