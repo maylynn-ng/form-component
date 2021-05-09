@@ -10,12 +10,16 @@ interface IUserFormProps {
   handleSubmit: (formInput: IFormData) => void;
   isValid: boolean;
   setIsValid: Dispatch<SetStateAction<boolean>>;
+  setFormData: Dispatch<SetStateAction<IFormData>>;
+  setPageIndex: Dispatch<SetStateAction<number>>;
 }
 
 const UserForm: FC<IUserFormProps> = ({
   handleSubmit,
   isValid,
   setIsValid,
+  setFormData,
+  setPageIndex,
 }) => {
   const formik = useFormik({
     initialValues: initialFormState,
@@ -23,6 +27,14 @@ const UserForm: FC<IUserFormProps> = ({
     onSubmit: handleSubmit,
     validateOnChange: true,
   });
+
+  const handleClick = (formInput: IFormData): void => {
+    console.log(formInput);
+    if (isValid) {
+      setFormData(formInput);
+      setPageIndex(prevIndex => prevIndex + 1);
+    }
+  };
 
   return (
     <div className="userform-container">
@@ -61,7 +73,11 @@ const UserForm: FC<IUserFormProps> = ({
             required={true}
           />
         </div>
-        <Button isValid={isValid} buttonText="Submit" />
+        <div
+          onClick={() => handleClick(formik.values)}
+          className={`submit-button ${isValid ? 'enable' : 'disable'}`}>
+          Submit
+        </div>
       </form>
     </div>
   );

@@ -38,23 +38,34 @@ const Dashboard: FC = () => {
           pagesArray={pagesArray}
         />
         <div className="form">
-          {formPage === 'userForm' ? (
+          <div
+            style={{
+              display: `${formPage === 'userForm' ? 'flex' : 'none'}`,
+            }}>
             <UserForm
               handleSubmit={handleSubmit}
               isValid={isValid}
               setIsValid={setIsValid}
+              setFormData={setFormData}
+              setPageIndex={setPageIndex}
             />
-          ) : null}
-          {formPage === 'privacyForm' ? (
+          </div>
+          <div
+            style={{
+              display: `${formPage === 'privacyForm' ? 'flex' : 'none'}`,
+            }}>
             <PrivacyForm
-              handleSubmit={handleSubmit}
-              isValid={isValid}
               formData={formData}
+              setFormData={setFormData}
+              setFormPage={setFormPage}
             />
-          ) : null}
-          {formPage === 'doneForm' ? (
-            <DoneForm isValid={isValid} formData={formData} />
-          ) : null}
+          </div>
+          <div
+            style={{
+              display: `${formPage === 'doneForm' ? 'flex' : 'none'}`,
+            }}>
+            <DoneForm formData={formData} />
+          </div>
         </div>
       </div>
     </div>

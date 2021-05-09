@@ -1,9 +1,9 @@
 import { FC, Dispatch, SetStateAction } from 'react';
 import './FormField.styles.css';
-import { formValidationSchema } from '../../types';
+import { formValidationSchema, IFormData } from '../../types';
 
 interface IFormFieldProps {
-  label: string;
+  label: keyof IFormData;
   formik: any;
   formValidationSchema: typeof formValidationSchema;
   setIsValid: Dispatch<SetStateAction<boolean>>;
@@ -19,7 +19,7 @@ const FormField: FC<IFormFieldProps> = ({
   type,
   required,
 }) => {
-  const capitalizedLabel = `${label[0].toUpperCase()}${label.slice(
+  const capitalizedLabel: string = `${label[0].toUpperCase()}${label.slice(
     1,
     label.length
   )}`;

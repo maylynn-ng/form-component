@@ -1,38 +1,54 @@
-import { FC } from 'react';
+import { Dispatch, FC, FormEvent, SetStateAction, useEffect } from 'react';
 import './PrivacyForm.styles.css';
 
-import { Button } from '../../Elements';
-import { IFormData } from '../../types';
+import { IFormData, Pages } from '../../types';
 
 interface IPrivacyFormProps {
-  handleSubmit: (formInput: IFormData) => void;
-  isValid: boolean;
   formData: IFormData;
+  setFormData: Dispatch<SetStateAction<IFormData>>;
+  setFormPage: Dispatch<SetStateAction<Pages>>;
 }
 
 const PrivacyForm: FC<IPrivacyFormProps> = ({
-  handleSubmit,
-  isValid,
   formData,
+  setFormData,
+  setFormPage,
 }) => {
+  const handleChange = (
+    e: FormEvent<HTMLInputElement>,
+    name: keyof IFormData
+  ): void => {
+    setFormData(prev => ({ ...prev, [name]: !prev[name] }));
+  };
+
   return (
     <div className="privacyform-container">
-      {/* <form onSubmit={handleSubmit}> */}
       <div className="checkbox">
-        <input type="checkbox" name="updates" />
+        <input
+          type="checkbox"
+          name="updates"
+          checked={formData.updates}
+          onChange={e => handleChange(e, 'updates')}
+        />
         <div className="checkbox-text">
           Receive updates about Tray.io product by email
         </div>
       </div>
       <div className="checkbox">
-        <input type="checkbox" name="communication" />
+        <input
+          type="checkbox"
+          name="communication"
+          checked={formData.communication}
+          onChange={e => handleChange(e, 'communication')}
+        />
         <div className="checkbox-text">
           Receive communication by email for other products created by the
           Tray.io team
         </div>
       </div>
-      <Button isValid={isValid} buttonText="Submit" />
-      {/* </form> */}
+      <div onClick={() => setFormPage('doneForm')} className="submit-button">
+        Submit
+      </div>
     </div>
   );
 };
