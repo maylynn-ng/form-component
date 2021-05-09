@@ -25,7 +25,7 @@ const FormField: FC<IFormFieldProps> = ({
   )}`;
   return (
     <div className="formfield-container">
-      <label htmlFor={label}>
+      <label data-testid="form-label" htmlFor={label}>
         {capitalizedLabel}
         {required ? <span className="required">*</span> : null}
       </label>
@@ -49,7 +49,9 @@ const FormField: FC<IFormFieldProps> = ({
         value={formik.values[label]}
       />
       {required && formik.errors[label] ? (
-        <div className="validation-error-message">{formik.errors[label]}</div>
+        <div data-testid="error-message" className="validation-error-message">
+          {formik.errors[label]}
+        </div>
       ) : null}
     </div>
   );

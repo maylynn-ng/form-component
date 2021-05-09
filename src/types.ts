@@ -21,19 +21,21 @@ export const initialFormState = {
 };
 
 export const formValidationSchema = yup.object().shape({
-  name: yup.string().required("Don't forget your name!"),
-  role: yup.string(),
+  name: yup.string().required("Don't forget your name!").trim(),
+  role: yup.string().trim(),
   email: yup
     .string()
     .email("Hmm... this email doesn't seem right")
-    .required('Please provide an email'),
+    .required('Please provide an email')
+    .trim(),
   password: yup
     .string()
     .required()
     .matches(/.{9,}/g, 'must be at least 10 characters')
     .matches(/[a-z]/g, 'must include at least one lowercase letter')
     .matches(/[A-Z]/g, 'must include at least one uppercase letter')
-    .matches(/\d/g, 'must have at least one number'),
+    .matches(/\d/g, 'must have at least one number')
+    .trim(),
   updates: yup.boolean().default(false),
   communication: yup.boolean().default(false),
 });
