@@ -12,8 +12,7 @@ interface IDoneFormProps {
 const DoneForm: FC<IDoneFormProps> = ({ formData, formPage }) => {
   useEffect(() => {
     if (formPage === 'doneForm') console.log(JSON.stringify(formData));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [formPage]);
 
   return (
     <div className="doneform-container">

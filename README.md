@@ -4,14 +4,14 @@
   <img src="./readmeFiles/screenshot.png" alt="Screenshot" style="zoom:50%">
   </p>
 
-#### Table of Contents
+### Table of Contents
 
 - [Features](#Features)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Observations](#observations)
 
-#### Features 🦾
+### Features 🦾
 
 - 3 page form - text input, checkbox and confirmation page
 - Tab navigation between form pages
@@ -20,14 +20,14 @@
 - Invalid form prevents progression to next page
 - Final page `console.log`s the JSON data
 
-#### Tech Stack 🛠
+### Tech Stack 🛠
 
 - [React](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Formik](https://www.npmjs.com/package/formik)
 - [Yup](https://www.npmjs.com/package/yup)
 
-#### Getting Started 🔌
+### Getting Started 🔌
 
 ##### Prerequesites
 
@@ -71,6 +71,6 @@
 
 Happy form filling! 🥳
 
-#### Observations :male_detective:
+### Observations :male_detective:
 
 - State management. While in a larger project I would opt to use Redux or React context, for an app of this size I didn't feel it necessary, and (even though I haven't seen the entire app) I would imagine the data from this form wouldn't used across the app
