@@ -1,40 +1,38 @@
-import { ChangeEventHandler, FC, FormEventHandler } from 'react';
+import { FC } from 'react';
 import './PrivacyForm.styles.css';
 
 import { Button } from '../../Elements';
 import { IFormData } from '../../types';
 
 interface IPrivacyFormProps {
-  handleSubmit: FormEventHandler<HTMLFormElement>;
-  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleSubmit: (formInput: IFormData) => void;
   isValid: boolean;
   formData: IFormData;
 }
 
 const PrivacyForm: FC<IPrivacyFormProps> = ({
   handleSubmit,
-  handleChange,
   isValid,
   formData,
 }) => {
   return (
     <div className="privacyform-container">
-      <form onSubmit={handleSubmit}>
-        <div className="checkbox">
-          <input type="checkbox" name="updates" />
-          <div className="checkbox-text">
-            Receive updates about Tray.io product by email
-          </div>
+      {/* <form onSubmit={handleSubmit}> */}
+      <div className="checkbox">
+        <input type="checkbox" name="updates" />
+        <div className="checkbox-text">
+          Receive updates about Tray.io product by email
         </div>
-        <div className="checkbox">
-          <input type="checkbox" name="communication" />
-          <div className="checkbox-text">
-            Receive communication by email for other products created by the
-            Tray.io team
-          </div>
+      </div>
+      <div className="checkbox">
+        <input type="checkbox" name="communication" />
+        <div className="checkbox-text">
+          Receive communication by email for other products created by the
+          Tray.io team
         </div>
-        <Button isValid={isValid} buttonText="Submit" />
-      </form>
+      </div>
+      <Button isValid={isValid} buttonText="Submit" directTo="doneForm" />
+      {/* </form> */}
     </div>
   );
 };

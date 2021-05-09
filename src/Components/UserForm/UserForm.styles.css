@@ -13,25 +13,7 @@ html {
   flex-direction: column;
 }
 
-.userform-container label {
-  font-size: 0.75em;
-  font-weight: 700;
-  margin: 0.625em 0;
-}
-
-.userform-container input {
-  padding: 1em;
-  box-sizing: border-box;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--tray-grey-light);
-  font-family: 0.8em;
-}
-
 .userform-container form {
   display: flex;
   flex-direction: column;
-}
-
-.userform-container .required {
-  color: var(--tray-error);
 }

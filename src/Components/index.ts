@@ -3,5 +3,6 @@ import UserForm from './UserForm/UserForm.component';
 import PrivacyForm from './PrivacyForm/PrivacyForm.components';
 import DoneForm from './DoneForm/DoneForm.component';
 import FormSelector from './FormSelector/FormSelector.component';
+import FormField from './FormField/FormField.component';
 
-export { NavBar, UserForm, PrivacyForm, DoneForm, FormSelector };
+export { NavBar, UserForm, PrivacyForm, DoneForm, FormSelector, FormField };

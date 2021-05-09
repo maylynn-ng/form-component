@@ -1,0 +1,29 @@
+.formfield-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.formfield-container label {
+  font-size: 0.75em;
+  font-weight: 700;
+  margin: 0.625em 0;
+}
+
+.formfield-container input {
+  padding: 1em;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--tray-grey-light);
+  font-family: 0.8em;
+}
+
+.formfield-container .required {
+  color: var(--tray-error);
+}
+
+.validation-error-message {
+  padding: 0.3em;
+  font-size: 0.75em;
+  font-family: var(--tray-font);
+  color: var(--tray-error);
+}

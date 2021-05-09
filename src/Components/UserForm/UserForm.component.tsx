@@ -1,75 +1,67 @@
-import { ChangeEventHandler, FC, FormEvent, FormEventHandler } from 'react';
+import { Dispatch, FC, SetStateAction } from 'react';
 import './UserForm.styles.css';
+import { useFormik } from 'formik';
 
+import { IFormData, initialFormState, formValidationSchema } from '../../types';
 import { Button } from '../../Elements';
+import { FormField } from '../';
 
 interface IUserFormProps {
-  handleSubmit: FormEventHandler<HTMLFormElement>;
-  handleChange: ChangeEventHandler<HTMLInputElement>;
+  handleSubmit: (formInput: IFormData) => void;
   isValid: boolean;
-  formData: IFormData;
-}
-
-interface IFormData {
-  name: string;
-  role: string;
-  email: string;
-  password: string;
+  setIsValid: Dispatch<SetStateAction<boolean>>;
 }
 
 const UserForm: FC<IUserFormProps> = ({
   handleSubmit,
-  handleChange,
   isValid,
-  formData,
+  setIsValid,
 }) => {
+  const formik = useFormik({
+    initialValues: initialFormState,
+    validationSchema: formValidationSchema,
+    onSubmit: handleSubmit,
+    validateOnChange: true,
+  });
+
   return (
     <div className="userform-container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <div className="inputs-container">
-          <label htmlFor="name">
-            Name <span className="required">*</span>
-          </label>
-          <input
-            name="name"
+          <FormField
+            label="name"
+            formik={formik}
+            formValidationSchema={formValidationSchema}
+            setIsValid={setIsValid}
             type="text"
-            placeholder="Name"
-            onChange={handleChange}
-            value={formData.name}
+            required={true}
           />
-
-          <label htmlFor="role">Role</label>
-          <input
-            name="role"
+          <FormField
+            label="role"
+            formik={formik}
+            formValidationSchema={formValidationSchema}
+            setIsValid={setIsValid}
             type="text"
-            placeholder="Role"
-            onChange={handleChange}
-            value={formData.role}
+            required={false}
           />
-
-          <label htmlFor="email">
-            Email <span className="required">*</span>
-          </label>
-          <input
-            name="email"
+          <FormField
+            label="email"
+            formik={formik}
+            formValidationSchema={formValidationSchema}
+            setIsValid={setIsValid}
             type="email"
-            placeholder="Email"
-            onChange={handleChange}
-            value={formData.email}
+            required={true}
           />
-
-          <label htmlFor="password">
-            Password <span className="required">*</span>
-          </label>
-          <input
-            name="password"
+          <FormField
+            label="password"
+            formik={formik}
+            formValidationSchema={formValidationSchema}
+            setIsValid={setIsValid}
             type="password"
-            placeholder="Password"
-            onChange={handleChange}
-            value={formData.password}
+            required={true}
           />
         </div>
-        <Button isValid={isValid} buttonText="Submit" />
+        <Button isValid={isValid} buttonText="Submit" directTo="privacyForm" />
       </form>
     </div>
   );

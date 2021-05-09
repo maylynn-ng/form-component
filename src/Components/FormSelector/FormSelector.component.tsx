@@ -1,29 +1,29 @@
 import { Dispatch, FC, SetStateAction } from 'react';
 import './FormSelector.styles.css';
+import { Pages } from '../../types';
 
 interface IFormSelectorProps {
-  setFormPage: Dispatch<SetStateAction<string>>;
-  formPage: string;
+  setFormPage: Dispatch<SetStateAction<Pages>>;
+  formPage: Pages;
+  allowedPages: Pages[];
 }
 
-const FormSelector: FC<IFormSelectorProps> = ({ setFormPage, formPage }) => {
+const FormSelector: FC<IFormSelectorProps> = ({
+  setFormPage,
+  formPage,
+  allowedPages,
+}) => {
+  const pagesArray: Pages[] = ['userForm', 'privacyForm', 'doneForm'];
+
   return (
     <div className="formpage-selector">
-      <div
-        onClick={() => setFormPage('userForm')}
-        className={`tab ${formPage === 'userForm' ? 'selected' : ''}`}>
-        User
-      </div>
-      <div
-        onClick={() => setFormPage('privacyForm')}
-        className={`tab ${formPage === 'privacyForm' ? 'selected' : ''}`}>
-        Privacy
-      </div>
-      <div
-        onClick={() => setFormPage('doneForm')}
-        className={`tab ${formPage === 'doneForm' ? 'selected' : ''}`}>
-        Done
-      </div>
+      {pagesArray.map(page => (
+        <div
+          onClick={() => setFormPage(page)}
+          className={`tab ${
+            formPage === page ? 'selected' : ''
+          }`}>{`${page[0].toUpperCase()}${page.slice(1, -4)}`}</div>
+      ))}
     </div>
   );
 };
