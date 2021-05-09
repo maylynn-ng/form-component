@@ -1,6 +1,8 @@
 # React Form Component
 
-[Screenshot](./readmeFiles/screenshot.png)
+<p align="center">
+  <img src="./readmeFiles/screenshot.png" alt="Screenshot" style="zoom:50%">
+  </p>
 
 #### Table of Contents
 
