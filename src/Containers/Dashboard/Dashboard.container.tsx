@@ -12,7 +12,6 @@ import {
 const Dashboard: FC = () => {
   const [isValid, setIsValid] = useState<boolean>(false);
   const [formPage, setFormPage] = useState<Pages>('userForm');
-  const [pageIndex, setPageIndex] = useState<number>(0);
   const [allowedPages, setAllowedPages] = useState<Pages[]>(['userForm']);
   const [formData, setFormData] = useState<IFormData>(initialFormState);
 
@@ -20,14 +19,7 @@ const Dashboard: FC = () => {
 
   const handleSubmit = (formInput: IFormData): void => {
     setFormData(formInput);
-    setPageIndex(prevIndex => prevIndex + 1);
   };
-
-  useEffect(() => {
-    setAllowedPages(prevPages => [...prevPages, pagesArray[pageIndex]]);
-    setFormPage(pagesArray[pageIndex]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageIndex]);
 
   return (
     <div className="dashboard-container">
@@ -49,7 +41,8 @@ const Dashboard: FC = () => {
               isValid={isValid}
               setIsValid={setIsValid}
               setFormData={setFormData}
-              setPageIndex={setPageIndex}
+              setAllowedPages={setAllowedPages}
+              setFormPage={setFormPage}
             />
           </div>
           <div
@@ -57,7 +50,6 @@ const Dashboard: FC = () => {
               display: `${formPage === 'privacyForm' ? 'flex' : 'none'}`,
             }}>
             <PrivacyForm
-              formData={formData}
               setFormData={setFormData}
               setFormPage={setFormPage}
               setAllowedPages={setAllowedPages}

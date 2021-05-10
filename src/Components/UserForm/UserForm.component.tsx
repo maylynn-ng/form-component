@@ -2,15 +2,21 @@ import { Dispatch, FC, SetStateAction } from 'react';
 import './UserForm.styles.css';
 import { useFormik } from 'formik';
 
-import { IFormData, initialFormState, formValidationSchema } from '../../types';
+import {
+  IFormData,
+  initialFormState,
+  formValidationSchema,
+  Pages,
+} from '../../types';
 import { FormField } from '../';
 
 interface IUserFormProps {
   handleSubmit: (formInput: IFormData) => void;
   isValid: boolean;
   setIsValid: Dispatch<SetStateAction<boolean>>;
+  setFormPage: Dispatch<SetStateAction<Pages>>;
+  setAllowedPages: Dispatch<SetStateAction<Pages[]>>;
   setFormData: Dispatch<SetStateAction<IFormData>>;
-  setPageIndex: Dispatch<SetStateAction<number>>;
 }
 
 const UserForm: FC<IUserFormProps> = ({
@@ -18,7 +24,8 @@ const UserForm: FC<IUserFormProps> = ({
   isValid,
   setIsValid,
   setFormData,
-  setPageIndex,
+  setFormPage,
+  setAllowedPages,
 }) => {
   const formik = useFormik({
     initialValues: initialFormState,
@@ -30,7 +37,8 @@ const UserForm: FC<IUserFormProps> = ({
   const handleClick = (formInput: IFormData): void => {
     if (isValid) {
       setFormData(formInput);
-      setPageIndex(prevIndex => prevIndex + 1);
+      setFormPage('privacyForm');
+      setAllowedPages(prev => [...prev, 'privacyForm']);
     }
   };
 

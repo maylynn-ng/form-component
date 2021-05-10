@@ -2,8 +2,13 @@ import React from 'react';
 import { Dashboard } from '../Containers';
 import { render } from '@testing-library/react';
 
-test('Dashboard should render Sign Up text', () => {
-  const { getByText } = render(<Dashboard />);
-  const signUpText = getByText('Sign up to stay tuned!');
-  expect(signUpText).toBeInTheDocument();
+describe('Dashboard', () => {
+  const component = render(<Dashboard />);
+  test('should render Sign Up text', () => {
+    const signUpText = component.getByText('Sign up to stay tuned!');
+    expect(signUpText).toBeInTheDocument();
+  });
+  test('should render userForm by default', () => {
+    // const userTab = component.getByText(/User/i);
+  });
 });

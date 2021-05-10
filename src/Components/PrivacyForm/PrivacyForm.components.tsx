@@ -4,14 +4,12 @@ import './PrivacyForm.styles.css';
 import { IFormData, Pages } from '../../types';
 
 interface IPrivacyFormProps {
-  formData: IFormData;
   setFormData: Dispatch<SetStateAction<IFormData>>;
   setFormPage: Dispatch<SetStateAction<Pages>>;
   setAllowedPages: Dispatch<SetStateAction<Pages[]>>;
 }
 
 const PrivacyForm: FC<IPrivacyFormProps> = ({
-  formData,
   setFormData,
   setFormPage,
   setAllowedPages,
@@ -32,9 +30,9 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
     <div className="privacyform-container">
       <div className="checkbox">
         <input
+          data-testid="checkbox"
           type="checkbox"
           name="updates"
-          checked={formData.updates}
           onChange={e => handleChange(e, 'updates')}
         />
         <div className="checkbox-text">
@@ -43,9 +41,9 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
       </div>
       <div className="checkbox">
         <input
+          data-testid="checkbox"
           type="checkbox"
           name="communication"
-          checked={formData.communication}
           onChange={e => handleChange(e, 'communication')}
         />
         <div className="checkbox-text">

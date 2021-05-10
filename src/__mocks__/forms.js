@@ -3,8 +3,8 @@ export const mockValidForm = {
   role: 'Schrute',
   email: 'd.shrute@dundermiflin.com',
   password: 'butReallyIamR3cyl0ps',
-  updates: true,
-  communication: true,
+  updates: false,
+  communication: false,
 };
 
 export const mockInitialState = {
@@ -33,5 +33,7 @@ export const mockUserFormProps = {
   handleSubmit: jest.fn(),
   setIsValid: jest.fn(),
   setFormData: jest.fn(),
-  setPageIndex: jest.fn(),
+  setAllowedPages: jest.fn(),
+  setFormData: jest.fn(),
+  setFormPage: jest.fn(),
 };
