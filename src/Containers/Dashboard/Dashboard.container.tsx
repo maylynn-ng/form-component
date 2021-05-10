@@ -57,6 +57,8 @@ const Dashboard: FC = () => {
               setFormPage={setFormPage}
               setAllowedPages={setAllowedPages}
               setCommsOptions={setCommsOptions}
+              commsOptions={commsOptions}
+              setFormData={setFormData}
             />
           ) : null}
           {formPage === 'doneForm' ? (

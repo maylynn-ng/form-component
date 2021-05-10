@@ -7,6 +7,5 @@ describe('Dashboard', () => {
   test('should render Sign Up text', () => {
     const signUpText = component.getByText('Sign up to stay tuned!');
     expect(signUpText).toBeInTheDocument();
-    // expect(1 + 1).toBe(2);
   });
 });

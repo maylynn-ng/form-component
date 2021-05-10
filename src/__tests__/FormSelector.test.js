@@ -5,8 +5,6 @@ import { render } from '@testing-library/react';
 const mockFormSelectorProps = {
   setFormPage: jest.fn(),
   pagesArray: ['userForm', 'privacyForm', 'doneForm'],
-  setAllowedPages: jest.fn(),
-  setIsValid: jest.fn(),
 };
 
 describe('FormSelector', () => {

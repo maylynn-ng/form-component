@@ -24,4 +24,5 @@
   border: 2px solid var(--tray-blue);
   border-radius: var(--border-radius);
   color: var(--tray-white);
+  transition: all 0.3s ease;
 }

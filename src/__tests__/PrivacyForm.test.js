@@ -1,14 +1,15 @@
 import React from 'react';
 import { PrivacyForm } from '../Components';
 import { render, cleanup, act } from '@testing-library/react';
-import { mockValidForm } from '../__mocks__/forms';
+import { mockCommsOptions } from '../__mocks__/forms';
 import userEvent from '@testing-library/user-event';
 
 const mockPrivacyFormProps = {
-  formData: mockValidForm,
-  setFormData: jest.fn(),
+  setCommsOptions: jest.fn(),
   setFormPage: jest.fn(),
   setAllowedPages: jest.fn(),
+  setFormData: jest.fn(),
+  commsOptions: mockCommsOptions,
 };
 
 describe('PrivacyForm', () => {
@@ -32,9 +33,9 @@ describe('PrivacyForm', () => {
   });
   test('should be unchecked by default', () => {
     expect(updatesCheckbox).not.toBeChecked();
-    expect(mockPrivacyFormProps.formData.updates).toBe(false);
+    expect(mockPrivacyFormProps.commsOptions.updates).toBe(false);
     expect(communicationCheckbox).not.toBeChecked();
-    expect(mockPrivacyFormProps.formData.communication).toBe(false);
+    expect(mockPrivacyFormProps.commsOptions.communication).toBe(false);
   });
 
   test('should toggle checkboxes on click', () => {
@@ -59,4 +60,8 @@ describe('PrivacyForm', () => {
     act(() => userEvent.click(submit));
     expect(mockPrivacyFormProps.setAllowedPages).toBeCalledTimes(1);
   });
+});
+
+test('', () => {
+  expect(1 + 1).toBe(2);
 });

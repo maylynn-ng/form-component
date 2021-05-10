@@ -1,18 +1,22 @@
 import { Dispatch, FC, FormEvent, SetStateAction } from 'react';
 import './PrivacyForm.styles.css';
 
-import { ICommsOptions, IFormData, Pages } from '../../types';
+import { ICommsOptions, IFormData, Pages, initialFormState } from '../../types';
 
 interface IPrivacyFormProps {
   setFormPage: Dispatch<SetStateAction<Pages>>;
   setAllowedPages: Dispatch<SetStateAction<Pages[]>>;
   setCommsOptions: Dispatch<SetStateAction<ICommsOptions>>;
+  setFormData: Dispatch<SetStateAction<IFormData>>;
+  commsOptions: ICommsOptions;
 }
 
 const PrivacyForm: FC<IPrivacyFormProps> = ({
   setFormPage,
   setAllowedPages,
   setCommsOptions,
+  setFormData,
+  commsOptions,
 }) => {
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     const { name } = e.currentTarget;
@@ -22,6 +26,7 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
   const handleClick = (): void => {
     setFormPage('doneForm');
     setAllowedPages(prev => [...prev, 'doneForm']);
+    setFormData(initialFormState);
   };
 
   return (
@@ -49,9 +54,9 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
           Tray.io team
         </div>
       </div>
-      <div onClick={handleClick} className="submit-button">
+      <button onClick={handleClick} className="submit-button">
         Submit
-      </div>
+      </button>
     </div>
   );
 };
