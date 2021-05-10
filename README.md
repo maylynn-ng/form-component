@@ -18,14 +18,12 @@
 - Form validation
 - Validation errors show error messages and update on change
 - Invalid form prevents progression to next page
-- Final page `console.log`s the JSON data
+- Final page `console.log`s the JSON data and disables navigation to other pages
 
 ### Tech Stack 🛠
 
 - [React](https://reactjs.org/)
 - [Typescript](https://www.typescriptlang.org/)
-- [Formik](https://www.npmjs.com/package/formik)
-- [Yup](https://www.npmjs.com/package/yup)
 
 ### Getting Started 🔌
 
@@ -71,7 +69,12 @@
 
 Happy form filling! 🥳
 
-### Observations :male_detective:
+#### Observations :male_detective:
 
-- While I considered using indexes to navigate and persisting the inputs by updating `formData` state on change, I decided on implementing page navigation using `display` properties to avoid additional re-renders and possibly affecting performance.
-- State management. While in a larger project I would opt to use Redux or React context, for an app of this size I didn't feel it necessary, and (even though I haven't seen the entire app) I would imagine the data from this form wouldn't used across the app
+- State management. While in a larger project I would opt to use Redux or React context, for an app of this size I didn't feel it necessary, and (even though I haven't seen the entire app) I would normally not save form data into a Redux store.
+
+##### If I had more time 🧨
+
+- Possibly implement routing to make logo link back to userForm page 
+- Add more animations: between pages, shake if user clicks on disabled button, etc.
+- Create this as more of a template so that it could be reused throughout the app
