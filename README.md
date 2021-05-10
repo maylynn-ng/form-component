@@ -73,4 +73,5 @@ Happy form filling! 🥳
 
 ### Observations :male_detective:
 
+- While I considered using indexes to navigate and persisting the inputs by updating `formData` state on change, I decided on implementing page navigation using `display` properties to avoid additional re-renders and possibly affecting performance.
 - State management. While in a larger project I would opt to use Redux or React context, for an app of this size I didn't feel it necessary, and (even though I haven't seen the entire app) I would imagine the data from this form wouldn't used across the app

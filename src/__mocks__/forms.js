@@ -28,3 +28,10 @@ export const mockFormikObject = {
     password: '',
   },
 };
+
+export const mockUserFormProps = {
+  handleSubmit: jest.fn(),
+  setIsValid: jest.fn(),
+  setFormData: jest.fn(),
+  setPageIndex: jest.fn(),
+};

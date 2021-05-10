@@ -34,8 +34,7 @@ export const formValidationSchema = yup.object().shape({
     .matches(/.{9,}/g, 'must be at least 10 characters')
     .matches(/[a-z]/g, 'must include at least one lowercase letter')
     .matches(/[A-Z]/g, 'must include at least one uppercase letter')
-    .matches(/\d/g, 'must have at least one number')
-    .trim(),
+    .matches(/\d/g, 'must have at least one number'),
   updates: yup.boolean().default(false),
   communication: yup.boolean().default(false),
 });

@@ -30,6 +30,7 @@ const FormField: FC<IFormFieldProps> = ({
         {required ? <span className="required">*</span> : null}
       </label>
       <input
+        data-testid="form-input"
         name={label}
         id={label}
         type={type}
