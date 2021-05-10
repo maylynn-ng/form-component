@@ -75,6 +75,6 @@ Happy form filling! 🥳
 
 ##### If I had more time 🧨
 
-- Possibly implement routing to make logo route back to userForm page 
-- Add more animations: between pages, shake if user clicks on disabled button
+- Possibly implement routing to make logo link back to userForm page 
+- Add more animations: between pages, shake if user clicks on disabled button, etc.
 - Create this as more of a template so that it could be reused throughout the app
