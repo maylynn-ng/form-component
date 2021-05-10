@@ -1,6 +1,6 @@
-import { FC, Dispatch, SetStateAction } from 'react';
+import { FC, Dispatch, SetStateAction, ChangeEvent } from 'react';
 import './FormField.styles.css';
-import { formValidationSchema, IFormData } from '../../types';
+import { formValidationSchema, IFormData, Pages } from '../../types';
 
 interface IFormFieldProps {
   label: keyof IFormData;
@@ -9,6 +9,7 @@ interface IFormFieldProps {
   setIsValid: Dispatch<SetStateAction<boolean>>;
   type: string;
   required: boolean;
+  setAllowedPages: Dispatch<SetStateAction<Pages[]>>;
 }
 
 const FormField: FC<IFormFieldProps> = ({
@@ -18,11 +19,25 @@ const FormField: FC<IFormFieldProps> = ({
   setIsValid,
   type,
   required,
+  setAllowedPages,
 }) => {
   const capitalizedLabel: string = `${label[0].toUpperCase()}${label.slice(
     1,
     label.length
   )}`;
+
+  const handleChangeAndBlur = (
+    e: ChangeEvent<HTMLInputElement>,
+    handleFunction: Function
+  ): void => {
+    handleFunction(e);
+    formValidationSchema.isValid(formik.values).then((valid: boolean) => {
+      setIsValid(valid);
+      if (!valid) {
+        setAllowedPages(() => ['userForm']);
+      }
+    });
+  };
   return (
     <div className="formfield-container">
       <label data-testid="form-label" htmlFor={label}>
@@ -35,18 +50,8 @@ const FormField: FC<IFormFieldProps> = ({
         id={label}
         type={type}
         placeholder={capitalizedLabel}
-        onChange={e => {
-          formik.handleChange(e);
-          formValidationSchema.isValid(formik.values).then((valid: boolean) => {
-            setIsValid(valid);
-          });
-        }}
-        onBlur={e => {
-          formik.handleBlur(e);
-          formValidationSchema.isValid(formik.values).then((valid: boolean) => {
-            setIsValid(valid);
-          });
-        }}
+        onChange={e => handleChangeAndBlur(e, formik.handleChange)}
+        onBlur={e => handleChangeAndBlur(e, formik.handleBlur)}
         value={formik.values[label]}
       />
       {required && formik.errors[label] ? (

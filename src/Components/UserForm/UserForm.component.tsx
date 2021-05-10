@@ -53,6 +53,7 @@ const UserForm: FC<IUserFormProps> = ({
             setIsValid={setIsValid}
             type="text"
             required={true}
+            setAllowedPages={setAllowedPages}
           />
           <FormField
             label="role"
@@ -61,6 +62,7 @@ const UserForm: FC<IUserFormProps> = ({
             setIsValid={setIsValid}
             type="text"
             required={false}
+            setAllowedPages={setAllowedPages}
           />
           <FormField
             label="email"
@@ -69,6 +71,7 @@ const UserForm: FC<IUserFormProps> = ({
             setIsValid={setIsValid}
             type="email"
             required={true}
+            setAllowedPages={setAllowedPages}
           />
           <FormField
             label="password"
@@ -77,6 +80,7 @@ const UserForm: FC<IUserFormProps> = ({
             setIsValid={setIsValid}
             type="password"
             required={true}
+            setAllowedPages={setAllowedPages}
           />
         </div>
         <div
