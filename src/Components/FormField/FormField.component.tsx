@@ -39,7 +39,7 @@ const FormField: FC<IFormFieldProps> = ({
         onChange={handleChange}
         value={formData[label]}
       />
-      {isRequired && errors[label] ? (
+      {isRequired && errors[label] ? ( // only show the errors if there are for this formfield
         <div data-testid="error-message" className="validation-error-message">
           {errors[label]}
         </div>

@@ -26,7 +26,6 @@ const Dashboard: FC = () => {
   const [commsOptions, setCommsOptions] = useState<ICommsOptions>(
     initialCommsOptions
   );
-
   const pagesArray: Pages[] = ['userForm', 'privacyForm', 'doneForm'];
 
   return (
@@ -57,7 +56,6 @@ const Dashboard: FC = () => {
               setFormPage={setFormPage}
               setAllowedPages={setAllowedPages}
               setCommsOptions={setCommsOptions}
-              commsOptions={commsOptions}
               setFormData={setFormData}
             />
           ) : null}

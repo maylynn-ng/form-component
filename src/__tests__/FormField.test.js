@@ -26,6 +26,7 @@ const generateFormFieldMockProps = (
   };
 };
 
+// created to generate all formfields in a more coherent way
 const mockFieldData = {
   name: { label: 'name', type: 'text', isRequired: true },
   role: { label: 'role', type: 'text', isRequired: false },
@@ -36,6 +37,7 @@ const mockFieldData = {
 describe('FormField - Name', () => {
   let mockProps;
   let component;
+
   beforeEach(() => {
     mockProps = generateFormFieldMockProps(
       ...Object.values(mockFieldData.name),
@@ -44,9 +46,11 @@ describe('FormField - Name', () => {
     );
     component = render(<FormField {...mockProps} />);
   });
+
   afterEach(() => {
     cleanup();
   });
+
   test('should have * when field is required', () => {
     const required = component.getByText('*');
     expect(required).toBeInTheDocument();
@@ -60,7 +64,7 @@ describe('FormField - Name', () => {
   test('should render error message when no name is provided', () => {
     const input = component.getByTestId('form-input');
     expect(input).toBeInTheDocument();
-    userEvent.type(input, '{tab}');
+    userEvent.type(input, '{tab}'); // inputs empty string
     const errorMessage = component.getByTestId('error-message');
     expect(errorMessage).toBeInTheDocument();
   });
@@ -69,6 +73,7 @@ describe('FormField - Name', () => {
 describe('FormField - Email', () => {
   let mockProps;
   let component;
+
   beforeEach(() => {
     mockProps = generateFormFieldMockProps(
       ...Object.values(mockFieldData.email),
@@ -77,10 +82,12 @@ describe('FormField - Email', () => {
     );
     component = render(<FormField {...mockProps} />);
   });
+
   test('should have * when field is required', () => {
     const required = component.getByText('*');
     expect(required).toBeInTheDocument();
   });
+
   test('should have capitalized label of input', () => {
     const label = component.getByTestId('form-label');
     expect(label).toHaveTextContent('Email');
@@ -94,6 +101,7 @@ describe('FormField - Email', () => {
 
 describe('FormField - No Errors', () => {
   test('should not render error message when all fields are valid', () => {
+    // renders all the fields using the mockFieldData object above and naming them to make them easier to refer to in this test
     const [
       formFieldNameComponent,
       formFieldRoleComponent,

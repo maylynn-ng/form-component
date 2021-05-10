@@ -20,6 +20,7 @@ const FormSelector: FC<IFormSelectorProps> = ({
     page: Pages,
     setFormPage: Dispatch<SetStateAction<Pages>>
   ): void => {
+    // makes sure the page is allowed before changing
     if (allowedPages.includes(page)) {
       setFormPage(page);
     }
@@ -34,7 +35,7 @@ const FormSelector: FC<IFormSelectorProps> = ({
           onClick={() => handleClick(allowedPages, page, setFormPage)}
           className={`tab ${formPage === page ? 'selected' : ''}
           ${!allowedPages.includes(page) ? 'disable' : ''}
-          `}>{`${page[0].toUpperCase()}${page.slice(1, -4)}`}</div>
+          `}>{`${page[0].toUpperCase()}${page.slice(1, -4)}`}</div> // creates a capitalized version of the label
       ))}
     </div>
   );

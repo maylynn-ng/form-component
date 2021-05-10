@@ -8,7 +8,6 @@ interface IPrivacyFormProps {
   setAllowedPages: Dispatch<SetStateAction<Pages[]>>;
   setCommsOptions: Dispatch<SetStateAction<ICommsOptions>>;
   setFormData: Dispatch<SetStateAction<IFormData>>;
-  commsOptions: ICommsOptions;
 }
 
 const PrivacyForm: FC<IPrivacyFormProps> = ({
@@ -16,7 +15,6 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
   setAllowedPages,
   setCommsOptions,
   setFormData,
-  commsOptions,
 }) => {
   const handleChange = (e: FormEvent<HTMLInputElement>) => {
     const { name } = e.currentTarget;
@@ -24,8 +22,8 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
   };
 
   const handleClick = (): void => {
-    setFormPage('doneForm');
-    setAllowedPages(prev => [...prev, 'doneForm']);
+    setFormPage('doneForm'); // progresses to next page
+    setAllowedPages(prev => ['doneForm']); // disables other pages once form is submitted
     setFormData(initialFormState);
   };
 

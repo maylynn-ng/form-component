@@ -33,6 +33,7 @@ const UserForm: FC<IUserFormProps> = ({
   errors,
   setErrors,
 }) => {
+  // useEffect listening to formData to handle asynchromicity of setErrors in handleChange
   useEffect(() => {
     setIsValid(validateForSubmit(errors));
   }, [formData]);
@@ -49,7 +50,7 @@ const UserForm: FC<IUserFormProps> = ({
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isValid) {
-      setFormPage('privacyForm');
+      setFormPage('privacyForm'); // progresses to next page
       setAllowedPages(prev => [...prev, 'privacyForm']);
     }
   };
