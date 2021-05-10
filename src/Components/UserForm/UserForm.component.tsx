@@ -1,42 +1,54 @@
-import { Dispatch, FC, SetStateAction } from 'react';
-import './UserForm.styles.css';
-import { useFormik } from 'formik';
-
 import {
-  IFormData,
-  initialFormState,
-  formValidationSchema,
-  Pages,
-} from '../../types';
+  ChangeEvent,
+  Dispatch,
+  FC,
+  FormEvent,
+  SetStateAction,
+  useEffect,
+} from 'react';
+import './UserForm.styles.css';
+
+import { IFormData, Pages, IErrors } from '../../types';
 import { FormField } from '../';
+import { validateInputs, validateForSubmit } from '../../utils';
 
 interface IUserFormProps {
-  handleSubmit: (formInput: IFormData) => void;
   isValid: boolean;
+  formData: IFormData;
   setIsValid: Dispatch<SetStateAction<boolean>>;
   setFormPage: Dispatch<SetStateAction<Pages>>;
   setAllowedPages: Dispatch<SetStateAction<Pages[]>>;
   setFormData: Dispatch<SetStateAction<IFormData>>;
+  errors: IErrors;
+  setErrors: Dispatch<SetStateAction<IErrors>>;
 }
 
 const UserForm: FC<IUserFormProps> = ({
-  handleSubmit,
   isValid,
   setIsValid,
   setFormData,
   setFormPage,
   setAllowedPages,
+  formData,
+  errors,
+  setErrors,
 }) => {
-  const formik = useFormik({
-    initialValues: initialFormState,
-    validationSchema: formValidationSchema,
-    onSubmit: handleSubmit,
-    validateOnChange: true,
-  });
+  useEffect(() => {
+    setIsValid(validateForSubmit(errors));
+  }, [formData]);
 
-  const handleClick = (formInput: IFormData): void => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    setErrors(prev => ({
+      ...prev,
+      [name]: validateInputs(name, value),
+    }));
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (isValid) {
-      setFormData(formInput);
       setFormPage('privacyForm');
       setAllowedPages(prev => [...prev, 'privacyForm']);
     }
@@ -44,50 +56,46 @@ const UserForm: FC<IUserFormProps> = ({
 
   return (
     <div className="userform-container">
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="inputs-container">
           <FormField
             label="name"
-            formik={formik}
-            formValidationSchema={formValidationSchema}
-            setIsValid={setIsValid}
+            formData={formData}
             type="text"
-            required={true}
-            setAllowedPages={setAllowedPages}
+            isRequired={true}
+            handleChange={handleChange}
+            errors={errors}
           />
           <FormField
             label="role"
-            formik={formik}
-            formValidationSchema={formValidationSchema}
-            setIsValid={setIsValid}
+            formData={formData}
             type="text"
-            required={false}
-            setAllowedPages={setAllowedPages}
+            isRequired={false}
+            handleChange={handleChange}
+            errors={errors}
           />
           <FormField
             label="email"
-            formik={formik}
-            formValidationSchema={formValidationSchema}
-            setIsValid={setIsValid}
+            formData={formData}
             type="email"
-            required={true}
-            setAllowedPages={setAllowedPages}
+            isRequired={true}
+            handleChange={handleChange}
+            errors={errors}
           />
           <FormField
             label="password"
-            formik={formik}
-            formValidationSchema={formValidationSchema}
-            setIsValid={setIsValid}
+            formData={formData}
             type="password"
-            required={true}
-            setAllowedPages={setAllowedPages}
+            isRequired={true}
+            handleChange={handleChange}
+            errors={errors}
           />
         </div>
-        <div
-          onClick={() => handleClick(formik.values)}
+        <button
+          type="submit"
           className={`submit-button ${isValid ? 'enable' : 'disable'}`}>
           Submit
-        </div>
+        </button>
       </form>
     </div>
   );

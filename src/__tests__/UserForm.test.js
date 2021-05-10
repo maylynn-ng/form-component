@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserForm } from '../Components';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { mockInitialState, mockUserFormProps } from '../__mocks__/forms';
 
@@ -22,7 +22,7 @@ describe('UserForm', () => {
       <UserForm {...mockUserFormProps} isValid={false} />
     );
     const button = component.getByText('Submit');
-    userEvent.click(button);
+    act(() => userEvent.click(button));
     expect(mockUserFormProps.setFormData).toHaveBeenCalledTimes(0);
   });
 
@@ -40,7 +40,7 @@ describe('UserForm', () => {
       <UserForm {...mockUserFormProps} isValid={true} />
     );
     const button = component.getByText('Submit');
-    userEvent.click(button);
+    act(() => userEvent.click(button));
     expect(mockUserFormProps.setFormData).toHaveBeenCalledTimes(1);
   });
 
@@ -49,7 +49,7 @@ describe('UserForm', () => {
       <UserForm {...mockUserFormProps} isValid={true} />
     );
     const button = component.getByText('Submit');
-    userEvent.click(button);
+    act(() => userEvent.click(button));
     expect(mockUserFormProps.setFormData).toHaveBeenCalledTimes(1);
     expect(mockUserFormProps.setFormData).toHaveBeenCalledWith(
       mockInitialState

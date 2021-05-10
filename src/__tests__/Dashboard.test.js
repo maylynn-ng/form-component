@@ -7,8 +7,6 @@ describe('Dashboard', () => {
   test('should render Sign Up text', () => {
     const signUpText = component.getByText('Sign up to stay tuned!');
     expect(signUpText).toBeInTheDocument();
-  });
-  test('should render userForm by default', () => {
-    // const userTab = component.getByText(/User/i);
+    // expect(1 + 1).toBe(2);
   });
 });

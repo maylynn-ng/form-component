@@ -1,48 +1,34 @@
-import { FC, Dispatch, SetStateAction, ChangeEvent } from 'react';
+import { FC, ChangeEventHandler } from 'react';
 import './FormField.styles.css';
-import { formValidationSchema, IFormData, Pages } from '../../types';
+import { IFormData, IErrors } from '../../types';
 
 interface IFormFieldProps {
   label: keyof IFormData;
-  formik: any;
-  formValidationSchema: typeof formValidationSchema;
-  setIsValid: Dispatch<SetStateAction<boolean>>;
+  formData: IFormData;
   type: string;
-  required: boolean;
-  setAllowedPages: Dispatch<SetStateAction<Pages[]>>;
+  isRequired: boolean;
+  errors: IErrors;
+  handleChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 const FormField: FC<IFormFieldProps> = ({
   label,
-  formik,
-  formValidationSchema,
-  setIsValid,
   type,
-  required,
-  setAllowedPages,
+  isRequired,
+  formData,
+  errors,
+  handleChange,
 }) => {
   const capitalizedLabel: string = `${label[0].toUpperCase()}${label.slice(
     1,
     label.length
   )}`;
 
-  const handleChangeAndBlur = (
-    e: ChangeEvent<HTMLInputElement>,
-    handleFunction: Function
-  ): void => {
-    handleFunction(e);
-    formValidationSchema.isValid(formik.values).then((valid: boolean) => {
-      setIsValid(valid);
-      if (!valid) {
-        setAllowedPages(() => ['userForm']);
-      }
-    });
-  };
   return (
     <div className="formfield-container">
       <label data-testid="form-label" htmlFor={label}>
         {capitalizedLabel}
-        {required ? <span className="required">*</span> : null}
+        {isRequired ? <span className="required">*</span> : null}
       </label>
       <input
         data-testid="form-input"
@@ -50,13 +36,12 @@ const FormField: FC<IFormFieldProps> = ({
         id={label}
         type={type}
         placeholder={capitalizedLabel}
-        onChange={e => handleChangeAndBlur(e, formik.handleChange)}
-        onBlur={e => handleChangeAndBlur(e, formik.handleBlur)}
-        value={formik.values[label]}
+        onChange={handleChange}
+        value={formData[label]}
       />
-      {required && formik.errors[label] ? (
+      {isRequired && errors[label] ? (
         <div data-testid="error-message" className="validation-error-message">
-          {formik.errors[label]}
+          {errors[label]}
         </div>
       ) : null}
     </div>

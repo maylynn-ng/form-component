@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormField, UserForm } from '../Components';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { mockFormikObject, mockUserFormProps } from '../__mocks__/forms';
 import { formValidationSchema } from '../types';
@@ -53,7 +53,7 @@ describe('FormField - Name', () => {
     const component = render(<FormField {...mockPropsWithNoNameError} />);
     const input = component.getByTestId('form-input');
     expect(input).toBeInTheDocument();
-    userEvent.type(input, '{tab}');
+    act(() => userEvent.type(input, '{tab}'));
     const errorMessage = component.getByTestId('error-message');
     expect(errorMessage).toBeInTheDocument();
   });
@@ -90,7 +90,7 @@ describe('FormField - Email', () => {
     const component = render(<FormField {...mockPropsWithNoEmailError} />);
     const input = component.getByLabelText(/email/i);
     expect(input).toBeInTheDocument();
-    userEvent.type(input, 'thisisnotanemail');
+    act(() => userEvent.type(input, 'thisisnotanemail'));
     const errorMessage = component.getByTestId('error-message');
     expect(errorMessage).toBeInTheDocument();
   });
@@ -131,7 +131,7 @@ describe('FormField & UserForm', () => {
     expect(passwordInput).toBeInTheDocument();
 
     const button = userFormComponent.getByText('Submit');
-    userEvent.click(button);
+    act(() => userEvent.click(button));
     expect(mockUserFormProps.setFormData).toHaveBeenCalledTimes(0);
     expect(button).toHaveClass('disable');
   });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { PrivacyForm } from '../Components';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, act } from '@testing-library/react';
 import { mockValidForm } from '../__mocks__/forms';
 import userEvent from '@testing-library/user-event';
 
@@ -39,24 +39,24 @@ describe('PrivacyForm', () => {
 
   test('should toggle checkboxes on click', () => {
     expect(updatesCheckbox).not.toBeChecked();
-    userEvent.click(updatesCheckbox);
+    act(() => userEvent.click(updatesCheckbox));
     expect(updatesCheckbox).toBeChecked();
-    userEvent.click(updatesCheckbox);
+    act(() => userEvent.click(updatesCheckbox));
     expect(updatesCheckbox).not.toBeChecked();
-    userEvent.click(communicationCheckbox);
+    act(() => userEvent.click(communicationCheckbox));
     expect(communicationCheckbox).toBeChecked();
-    userEvent.click(communicationCheckbox);
+    act(() => userEvent.click(communicationCheckbox));
     expect(communicationCheckbox).not.toBeChecked();
   });
   test("should call setFormPage with 'doneForm' on submit", () => {
     const submit = component.getByText(/Submit/i);
-    userEvent.click(submit);
+    act(() => userEvent.click(submit));
     expect(mockPrivacyFormProps.setFormPage).toBeCalledTimes(1);
     expect(mockPrivacyFormProps.setFormPage).toBeCalledWith('doneForm');
   });
   test('should call setAllowedPages with all pages', () => {
     const submit = component.getByText(/Submit/i);
-    userEvent.click(submit);
+    act(() => userEvent.click(submit));
     expect(mockPrivacyFormProps.setAllowedPages).toBeCalledTimes(1);
   });
 });

@@ -1,6 +1,14 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, FormEvent, FormEventHandler, useEffect, useState } from 'react';
 import './Dashboard.styles.css';
-import { IFormData, initialFormState, Pages } from '../../types';
+import {
+  IFormData,
+  initialFormState,
+  Pages,
+  IErrors,
+  initialErrors,
+  ICommsOptions,
+  initialCommsOptions,
+} from '../../types';
 
 import {
   UserForm,
@@ -14,12 +22,12 @@ const Dashboard: FC = () => {
   const [formPage, setFormPage] = useState<Pages>('userForm');
   const [allowedPages, setAllowedPages] = useState<Pages[]>(['userForm']);
   const [formData, setFormData] = useState<IFormData>(initialFormState);
+  const [errors, setErrors] = useState<IErrors>(initialErrors);
+  const [commsOptions, setCommsOptions] = useState<ICommsOptions>(
+    initialCommsOptions
+  );
 
   const pagesArray: Pages[] = ['userForm', 'privacyForm', 'doneForm'];
-
-  const handleSubmit = (formInput: IFormData): void => {
-    setFormData(formInput);
-  };
 
   return (
     <div className="dashboard-container">
@@ -32,35 +40,32 @@ const Dashboard: FC = () => {
           pagesArray={pagesArray}
         />
         <div className="form">
-          <div
-            style={{
-              display: `${formPage === 'userForm' ? 'flex' : 'none'}`,
-            }}>
+          {formPage === 'userForm' ? (
             <UserForm
-              handleSubmit={handleSubmit}
               isValid={isValid}
               setIsValid={setIsValid}
               setFormData={setFormData}
               setAllowedPages={setAllowedPages}
               setFormPage={setFormPage}
+              formData={formData}
+              errors={errors}
+              setErrors={setErrors}
             />
-          </div>
-          <div
-            style={{
-              display: `${formPage === 'privacyForm' ? 'flex' : 'none'}`,
-            }}>
+          ) : null}
+          {formPage === 'privacyForm' ? (
             <PrivacyForm
-              setFormData={setFormData}
               setFormPage={setFormPage}
               setAllowedPages={setAllowedPages}
+              setCommsOptions={setCommsOptions}
             />
-          </div>
-          <div
-            style={{
-              display: `${formPage === 'doneForm' ? 'flex' : 'none'}`,
-            }}>
-            <DoneForm formData={formData} formPage={formPage} />
-          </div>
+          ) : null}
+          {formPage === 'doneForm' ? (
+            <DoneForm
+              formData={formData}
+              formPage={formPage}
+              commsOptions={commsOptions}
+            />
+          ) : null}
         </div>
       </div>
     </div>

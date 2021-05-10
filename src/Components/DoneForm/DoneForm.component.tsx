@@ -2,16 +2,18 @@ import { FC, useEffect } from 'react';
 import './DoneForm.styles.css';
 import tickbox from '../../Assets/tickbox.png';
 
-import { IFormData, Pages } from '../../types';
+import { ICommsOptions, IFormData, Pages } from '../../types';
 
 interface IDoneFormProps {
   formData: IFormData;
   formPage: Pages;
+  commsOptions: ICommsOptions;
 }
 
-const DoneForm: FC<IDoneFormProps> = ({ formData, formPage }) => {
+const DoneForm: FC<IDoneFormProps> = ({ formData, formPage, commsOptions }) => {
   useEffect(() => {
-    if (formPage === 'doneForm') console.log(JSON.stringify(formData));
+    if (formPage === 'doneForm')
+      console.log(JSON.stringify({ ...formData, ...commsOptions }));
   }, [formPage]);
 
   return (

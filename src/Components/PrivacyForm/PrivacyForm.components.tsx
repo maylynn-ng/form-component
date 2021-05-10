@@ -1,24 +1,22 @@
 import { Dispatch, FC, FormEvent, SetStateAction } from 'react';
 import './PrivacyForm.styles.css';
 
-import { IFormData, Pages } from '../../types';
+import { ICommsOptions, IFormData, Pages } from '../../types';
 
 interface IPrivacyFormProps {
-  setFormData: Dispatch<SetStateAction<IFormData>>;
   setFormPage: Dispatch<SetStateAction<Pages>>;
   setAllowedPages: Dispatch<SetStateAction<Pages[]>>;
+  setCommsOptions: Dispatch<SetStateAction<ICommsOptions>>;
 }
 
 const PrivacyForm: FC<IPrivacyFormProps> = ({
-  setFormData,
   setFormPage,
   setAllowedPages,
+  setCommsOptions,
 }) => {
-  const handleChange = (
-    e: FormEvent<HTMLInputElement>,
-    name: keyof IFormData
-  ): void => {
-    setFormData(prev => ({ ...prev, [name]: !prev[name] }));
+  const handleChange = (e: FormEvent<HTMLInputElement>) => {
+    const { name } = e.currentTarget;
+    setCommsOptions(prev => ({ ...prev, [name]: !prev[name] }));
   };
 
   const handleClick = (): void => {
@@ -33,7 +31,7 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
           data-testid="checkbox"
           type="checkbox"
           name="updates"
-          onChange={e => handleChange(e, 'updates')}
+          onChange={handleChange}
         />
         <div className="checkbox-text">
           Receive updates about Tray.io product by email
@@ -44,7 +42,7 @@ const PrivacyForm: FC<IPrivacyFormProps> = ({
           data-testid="checkbox"
           type="checkbox"
           name="communication"
-          onChange={e => handleChange(e, 'communication')}
+          onChange={handleChange}
         />
         <div className="checkbox-text">
           Receive communication by email for other products created by the
