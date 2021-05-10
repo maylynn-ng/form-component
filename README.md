@@ -71,7 +71,7 @@ Happy form filling! 🥳
 
 #### Observations :male_detective:
 
-- State management. While in a larger project I would opt to use Redux or React context, for an app of this size I didn't feel it necessary, and (even though I haven't seen the entire app) I would imagine the data from this form wouldn't used across the app
+- State management. While in a larger project I would opt to use Redux or React context, for an app of this size I didn't feel it necessary, and (even though I haven't seen the entire app) I would normally not save form data into a Redux store.
 
 ##### If I had more time 🧨
 
